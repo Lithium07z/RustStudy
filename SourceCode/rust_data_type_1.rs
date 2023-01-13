@@ -38,14 +38,14 @@ fn main() {
     // Rust의 char형은 4bytes이기 때문에 유니코드상의 대부분의 문자를 표현할 수 있다.
 
     let a = 'A';
-	print!("{}", a as u8); // 이 경우 65가 출력된다.
+    print!("{}", a as u8); // 이 경우 65가 출력된다.
 
-	let a = 65;
-	print!("{}", a as char); // 하지만 역은 성립하지 않는다.
+    let a = 65;
+    print!("{}", a as char); // 하지만 역은 성립하지 않는다.
 
     // std::mem::size_of::<데이터타입>() 코드를 사용해 데이터 타입이 몇 bytes인지 알 수 있다.
     println!("Size of a char: {}", std::mem::size_of::<char>()); // 4 bytes
-	println!("Size of a char: {}", std::mem::size_of::<u128>()); // 16 bytes
+    println!("Size of a char: {}", std::mem::size_of::<u128>()); // 16 bytes
 
     //  서로 다른 크기의 변수간의 연산시 주의할 점 
     /*  서로 다른 크기로 지정된 변수끼리의 연산은 불가능하다.
