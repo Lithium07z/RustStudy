@@ -36,21 +36,22 @@ fn main() {
 
     println!("Is array the same as array2? {}", array == array2); // 정상 동작, true
 
+    // 배열 타입을 알아내는 방법
     let array = ["One", "Two"];
     
     array.abcdefg(); // 실존하지 않는 메소드를 사용하려 한다.
-	/*  error[E0599]: no method named `abcdefg` found for array `[&str; 2]` in the current scope
-		에러와 함께 배열의 타입을 알려준다. 사실상 귀찮으니 컴파일러한테 알려달라고 하는 셈	
-	*/	
+    /*  error[E0599]: no method named `abcdefg` found for array `[&str; 2]` in the current scope
+	에러와 함께 배열의 타입을 알려준다. 사실상 귀찮으니 컴파일러한테 알려달라고 하는 셈	
+    */	
 
     let array = ["1월", "2월"];
     println!("{:?}", array[3]); // 에러 발생, 프로그램 비정상 종료, index out of bounds
     println!("{:?}", array.get(3)); // 일단 동작, 프로그램 정상 종료, None
-	println!("{:?}", array.get(1)); // get의 인자가 정상 범위라면 Some에 담아서 반환, Some("2월")
-	// Some, None을 Option enum이라고 함
+    println!("{:?}", array.get(1)); // get의 인자가 정상 범위라면 Some에 담아서 반환, Some("2월")
+    // Some, None을 Option enum이라고 함
 
     /****************
-    *      튜플    
+    *      튜플      
     ****************/
 
     let dat: (i32, char, bool) = (1, 'A', true); // 명시적인 타입 지정
@@ -84,12 +85,12 @@ fn main() {
 
     println!("{:?}", seasons[0..2]); 
     // 에러 발생, [&str]은 dynamically sized type이므로 컴파일 시간에 크기를 알 수 없음
-    // 배열, 문자열 등... 모두 동적 데이터 타입이므로, 컴파일 시간에 데이터 크기를 알 수 없다. 따라서 참조함으로써
-    // 그 데이터의 사이즈를 본다.
+    // 배열, 문자열 등... 모두 동적 데이터 타입이므로, 컴파일 시간에 데이터 크기를 알 수 없다. 
+    // 따라서 참조함으로써 그 데이터의 사이즈를 본다.
     
-    println!("{:?}", &seasons[0..2]); // ["봄", "여름"]
+    println!("{:?}", &seasons[0..2]);  // ["봄", "여름"]
     println!("{:?}", &seasons[0..=2]); // ["봄", "여름", "가을"]
-    println!("{:?}", &seasons[..]); // 전체 출력
-    println!("{:?}", &seasons[3..]); // 겨울부터 전체 출력
-    println!("{:?}", &seasons[..=4]); // 두번째 봄까지 출력
+    println!("{:?}", &seasons[..]);    // 전체 출력
+    println!("{:?}", &seasons[3..]);   // 겨울부터 전체 출력
+    println!("{:?}", &seasons[..=4]);  // 두번째 봄까지 출력
 }
