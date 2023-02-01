@@ -25,7 +25,7 @@ struct Colour(u8, u8, u8);
 
 fn main() {
     let my_colour = Colour(20, 50, 100);
-	// tuple struct는 필드명이 없으므로 인덱스를 통해 필드 값에 접근한다. Ex) ~~.0, ~~.1, ~~.2, ...
+    // tuple struct는 필드명이 없으므로 인덱스를 통해 필드 값에 접근한다. Ex) ~~.0, ~~.1, ~~.2, ...
     println!("The second colour is {}", my_colour.1); // The second colour is 50
     println!("{:?}", my_colour); // Colour(20, 50, 100)
 }
@@ -38,14 +38,14 @@ struct Country {
 }
 
 fn main() {
-	// 구조체 초기화
+    // 구조체 초기화
     let canada = Country {
         population: 35_000_000,
         capital: "Ottawa".to_owned(),
         leader_name: "Justin Trudeau".to_owned(),
     };
     println!("The population is: {}\nThe capital is: {}", canada.population, canada.capital);
-	// .을 이용해 필드 값을 읽음
+    // .을 이용해 필드 값을 읽음
 }
 
 /* struct 필드 단축 초기화
@@ -65,7 +65,7 @@ fn main() {
     let leader_name = "Justin Trudeau".to_owned();
 
     let my_country = Country {
-        population, // // struct 필드명과 파라미터명이 같은 경우 사용 population: population, 보다 훨씬 간편함
+        population, // struct 필드명과 파라미터명이 같은 경우 사용 population: population, 보다 훨씬 간편함
         capital,
         leader_name
     };
