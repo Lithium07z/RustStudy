@@ -1,6 +1,31 @@
 /*
 Topic : Rust 반복문
 */
+
+// 라벨링
+fn main() {
+    let mut counter = 0;
+    let mut counter2 = 0;
+    println!("Now entering the first loop.");
+
+    'first_loop: loop {
+        // 첫번째 루프에 이름을 줌, 이름 앞에 '을 붙여야하고 이름은 snake case로 작성해야함
+        counter += 1;
+        println!("The counter is now: {}",counter);
+        if counter > 9 {
+            // 두번째 루프 시작
+            println!("Now entering the second loop.");
+            'second_loop: loop {
+                println!("The second counter is now: {}", counter2);
+                counter2 += 1;
+                if counter2 == 3 {
+                    break 'first_loop; // 'first_loop로 탈출함
+                }
+            }
+        }
+    }
+}
+
 // loop 반복문
 fn loop_then_return(mut counter: i32) -> i32{
     loop {
@@ -50,6 +75,12 @@ fn main() {
         sum += i;
     }
     println!("Sum of 1~100: {}", sum);
+}
+
+fn main() {
+    for _ in 0..=3 { // 반복문만 필요하고 반복문의 변수는 필요 없을 때 사용, _값은 사용이 불가능함
+        println!("I don't need a number");
+    }
 }
 
 // break와 continue
