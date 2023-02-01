@@ -6,6 +6,17 @@ Topic : Rust 소유권 (ownership)
     이러한 문제는 call by reference, 복사, 재리턴 등의 방법들이 있다.
 */
 
+// Scalar타입 데이터는 예외
+fn print_number(number: i32) {
+        println!("{}", number);
+}
+
+fn main() {
+    let my_number = 8;
+    print_number(my_number);
+    print_number(my_number);
+}   // Scalar타입 데이터는 소유권 이전없이 그냥 사용가능
+
 // Case 1 (Call by value), 에러 발생
 fn print_country(country_name: String) {
     println!("My country is {}", country_name);
