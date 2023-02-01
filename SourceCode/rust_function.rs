@@ -8,6 +8,7 @@ fn test_function(one: i32, two: i32) -> i32 { // 파라미터 이름: 데이터 
     2. 함수명과 변수명은 소문자의 snake case를 사용한다. (다르게 사용할 수 있지만 warning 발생)
     3. 함수를 외부에서 사용할 수 있도록 pun fn와 같이 정의할 수 있다.
     4. 피호출 함수는 호출함수 뒤에 와도 상관 없다. 함수 위치 상관 X
+    5. return문 생략시 empty tuple을 반환한다.
     */
     dbg!(one, two); // 디버그 매크로로 매개변수로 들어온 인자 상태를 출력
     return one + two; // return을 사용해 반환할 수 있고 (statement)
