@@ -33,7 +33,7 @@ fn main() {
     let b: String = "World".to_owned();
     println!("{}", test_function(1, 2));
  
-    // 함수에 값을 전달할 때는 항상 &로 전달해야 함! (Scalar타입 제외)
+    // 함수에 값을 전달할 때는 항상 &로 전달해야 함! (Scalar타입 제외), 소유권 (OwnerShip) 문제 때문
     let c = string_function_1(a, b);
     println!("{}", a); // 에러 발생, string_function에 값을 전달할 때 &로 주지 않았으므로 소유권 자체가 이전되어 사용 불가능
     println!("{}", b); // 에러 발생, string_function에 값을 전달할 때 &로 주지 않았으므로 소유권 자체가 이전되어 사용 불가능
