@@ -2,6 +2,10 @@
 Topic : Rust match
 */
 fn main() {
+    /*  rust는 OOP의 if도 지원하지만 이보다 더 강력한 match가 있다.
+        match 입력되는 값의 모든 경우 조건 분기를 검사한다.
+        리턴이 있다면 반드시 모든 분기의 리턴은 같은 타입이어야 한다.
+    */
     // 일반적인 조건문
     let number = 5;
     if number == 7 { // if (number == 7)처럼 괄호를 붙여도 되지만 warning발생
@@ -85,7 +89,7 @@ fn match_number(input: i32) {
     match (input) {
         number => println!("It's the number {}", number), // number 의 값에 상관없이 무조건 실행됨
         number @ 0..=10 => println!("It's between 0 and 10. It's the number {}", number), 
-        // input으로 들어온 값을 @를 이용해 number라는 이름으로 사용함 
+        // input으로 들어온 값을 @를 이용해 범위연산함
         // number if number >= 0 && number <= 10 보다 훨씬 짧아짐
         _ => println!("It's greater than ten")
     }
