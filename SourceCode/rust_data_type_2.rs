@@ -93,4 +93,26 @@ fn main() {
     println!("{:?}", &seasons[..]);    // 전체 출력
     println!("{:?}", &seasons[3..]);   // 겨울부터 전체 출력
     println!("{:?}", &seasons[..=4]);  // 두번째 봄까지 출력
+	
+    let arr:[i32; 10] = [1; 10];  // i32타입 10크기의 배열 1로 초기화
+    
+    let vec:Vec<i32> = Vec::from(arr); // from 함수를 사용한 배열 > 벡터 변환
+    println!("{:?}", vec); // [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+    let vec:Vec<i32> = vec![1, 2, 3]; // 벡터 매크로를 사용한 벡터 생성
+    println!("{:?}", vec); // [1, 2, 3]
+
+    let vec:Vec<u8> = Vec::from(String::from("HELLO")); 
+    // from 함수를 사용한 Stirng > 벡터 변환
+    // Vec::from을 사용해 벡터변환시 생성되는 벡터는 u8타입임
+    println!("{:?}", vec); // [72, 69, 76, 76, 79], ASCII로 출력됨
+
+    // 튜플을 포함한 배열의 2차원 배열
+    let t:[[(&str,i32); 10]; 5] = [[("rust",2023); 10]; 5]; 
+    // &str과 i32 타입을 가지는 튜플 10개를 가진 배열, 그리고 그 배열을 5개 가진 2차원 배열
+    // 10 by 5크기의 배열에 각각의 원소는 ("rust, 2023")
+
+    for i in t.iter() { // tuple iterator 사용
+        println!("{i:?}");
+    }
 }
