@@ -31,3 +31,101 @@ fn main() {
     println!("{:?}, {:?}", no_index, index);
     // enum 열거형의 각 variant별로 어떤 처리를 수행하기 위해 일반적으로 match expression을 자주 사용한다.
 }
+
+// Case 1, 에러 발생, Option을 사용하지 않은 안전하지 못한 방식의 설계
+fn take_fifth(value: Vec<i32>) -> i32 {
+    value[4]
+}
+
+fn main() {
+    let new_vec = vec![1, 2];
+    let index = take_fifth(new_vec);
+    // 에러 발생, thread 'main' panicked at 'index out of bounds: the len is 2 but the index is 4'
+    // 안전하지 못한 방식의 코드 설계
+}
+
+// Case 2, 정상 동작, Option을 사용해 보다 안전한 방식의 설계
+// 묵시적으로 std::Option이 있으므로 std::Option::*; 으로 사용하지 않아도됨
+fn take_fifth(value: Vec<i32>) -> Option<i32> {
+    if value.len() < 5 {
+        None
+    } else {
+        Some(value[4])
+    }
+}
+
+fn main() {
+    let new_vec = vec![1, 2];
+    let index = take_fifth(new_vec);
+    println!("{:?}", index);
+}
+
+// Case 3, 일단 동작, Some으로 반환된 값을 사용하고 싶을 때 하지만 반환값이 None인 경우 unwrap 불가능 에러 발생
+fn take_fifth(value: Vec<i32>) -> Option<i32> {
+    if value.len() < 5 {
+        None
+    } else {
+        Some(value[4])
+    }
+}
+
+fn main() {
+    let new_vec = vec![1, 2, 3, 4, 5, 6, 7, 8];
+    // let new_vec = vec![1, 2]; // 이 경우에는 에러 발생, thread 'main' panicked at 'called `Option::unwrap()` on a `None` value'
+    let index = take_fifth(new_vec);
+    println!("{:?}", index.unwrap());
+}
+
+// Case 4, 정상 동작, match를 사용해 None과 Some의 경우 모두를 처리함
+fn take_fifth(value: Vec<i32>) -> Option<i32> {
+    if value.len() < 5 {
+        None
+    } else {
+        Some(value[4])
+    }
+}
+
+fn main() {
+    let new_vec = vec![1, 2, 3, 4, 5, 6, 7, 8];
+    let index = take_fifth(new_vec);
+    
+    match index {
+        Some(number) => println!("I got a number: {}", number),
+        None => println!("There was nothing inside")
+    }
+}
+
+// Case 5, 정상 동작, is_some()함수를 사용함
+fn take_fifth(value: Vec<i32>) -> Option<i32> {
+    if value.len() < 5 {
+        None
+    } else {
+        Some(value[4])
+    }
+}
+
+fn main() {
+    let new_vec = vec![1, 2, 3, 4, 5, 6, 7, 8];
+    let index = take_fifth(new_vec);
+    
+    if index.is_some() { // bool
+        println!("I got a number: {}", index.unwrap());
+    }
+}
+
+// 번외
+fn take_fifth(value: Vec<i32>) -> Option<i32> {
+    if value.len() < 5 {
+        None
+    } else {
+        Some(value[4])
+    }
+}
+
+fn main() {
+    let new_vec = vec![1, 2];
+    let index = take_fifth(new_vec);
+    
+    index.expect("Needed at least five items - make sure Vec has at least five");
+    // 런타임 중 panic에 걸렸을 때의 에러 메세지를 직접 정하는 함수
+}
