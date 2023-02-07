@@ -87,7 +87,7 @@ fn main() {
     println!("{:?}", book_hashmap.get(&1)); // 정상 동작, 값을 빌려오므로 소유권 이전 발생 X
 }
 
-// Case 3 -3, Map의 소유권 이전 2
+// Case 3 - 3, Map의 소유권 이전 2
 use std::collections::HashMap;
  
 fn main() {
