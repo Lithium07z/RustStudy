@@ -10,6 +10,11 @@ enum Option<T> {
     Some(T), // .is_some()
 }
 
+/*  Result 타입은 정상적으로 수행되었을 T 타입의 값을 리턴하고, 에러가 났을 때 E 타입의 값을 리턴한다.
+		Result 타입은 자주 사용되기 때문에 별도로 std::io::Result을 include 하지 않아도 (즉, use를 사용하지 않아도) 
+		직접 사용할 수 있다. 아래는 Result 열거형 타입의 정의인데, 기본적으로 정상 실행된 경우 Ok(T)를, 에러인 경우 Err(E)를 가진다.
+*/
+
 enum Result<T, E> {
     Ok(T),  // .is_ok()
     Err(E), // .is_err()
