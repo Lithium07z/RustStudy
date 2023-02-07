@@ -87,6 +87,24 @@ fn main() {
     println!("{:?}", book_hashmap.get(&1)); // 정상 동작, 값을 빌려오므로 소유권 이전 발생 X
 }
 
+// Case 3 -3, Map의 소유권 이전 2
+use std::collections::HashMap;
+ 
+fn main() {
+    let mut map: HashMap<String, i32> = HashMap::new();
+ 
+    map.insert(String::from("Korea"), 5);
+     
+    let germ = String::from("Germany");
+    map.insert(germ, 4);
+    /*  만약 Key 혹은 Value에 String과 같은 owned value가 전달된다면, 
+        그 소유권(ownership)은 HaspMap으로 이동(move)한다. 
+        따라서, 위 예제의 변수 germ은 map.insert(germ, 4); 이후에 사용될 수 없다.
+    */
+    println!("{:?}", map);
+    println!("{}", germ); // 에러 발생, germ 사용 불가능
+}
+
 // Case 4 - 1, HashMap함수 사용
 use std::collections::HashMap;
 
