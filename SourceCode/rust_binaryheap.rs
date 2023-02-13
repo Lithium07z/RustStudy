@@ -34,4 +34,16 @@ fn main() {
     while let Some(Reverse(i)) = minheap.pop() {
         print!("{} ", i); // 최소힙이므로 1, 2, 3...순으로 출력
     }
+    
+    let mut jobs = BinaryHeap::new();
+
+    jobs.push((100, "Write back to email from the CEO")); // 튜플을 BinaryHeap에 넣음
+    jobs.push((80, "Finish the report today"));
+    jobs.push((5, "Watch some YouTube"));
+    jobs.push((70, "Tell your team members thanks for always working hard"));
+    jobs.push((30, "Plan who to hire next for the team"));
+
+    while let Some(job) = jobs.pop() { 
+        println!("You need to: {}", job.1); // 튜플의 첫 번째 값을 기준으로 MaxHeap정렬되어 출력됨
+    }
 }
