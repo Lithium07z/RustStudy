@@ -1,6 +1,9 @@
 /*
 Topic : Rust VecDeque
 */
+/*  벡터를 스택, 큐로서 사용한다면 O(1)로 연산을 할 수 있다.
+    벡터를 벡터로서 사용한다면 O(N)만큼 걸린다.
+*/
 use::std::collections::VecDeque;
 
 fn main() {
